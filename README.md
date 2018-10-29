@@ -4,6 +4,12 @@ go-zabbix-proto
 Go lang package implementing Zabbix Protocols in active mode.
 
 
+# Tests
+
+```bash
+go test ./...
+```
+
 # Examples:
 
 ## Agent Example
