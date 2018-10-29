@@ -43,7 +43,6 @@ func main() {
     if err != nil {
         log.Print(err.Error())
     } else {
-        // log.Print("Received response: ", res.Json)
         log.Println("Got", len(config.Hosts), "hosts")
     }
 
