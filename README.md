@@ -1,12 +1,13 @@
 go-zabbix-proto
 ==================
 
-Go lang package implementing Zabbix Protocols (currently only Proxy) in active mode.
+Go lang package implementing Zabbix Protocols in active mode.
 
 
 # Examples:
 
 ## Proxy Example
+
 ```go
 package main
 
@@ -78,6 +79,44 @@ func main() {
         log.Print(err.Error())
     } else {
         log.Print("Received response: ", historyRes.Json)
+    }
+}
+```
+
+## Agent Example
+
+```go
+package main
+
+import (
+    zbxagent "go-zabbix-proto/agent"
+    "log"
+    "time"
+)
+
+const (
+    serverHost = `localhost`
+    serverPort = 10051
+    agentName  = `ZabbixServer`
+)
+
+func main() {
+    // New Agent
+    agent := zbxagent.NewAgent(agentName, serverHost, serverPort)
+
+    var err error
+
+    // Sending metrics to Zabbix
+    var data []*zbxagent.Metric
+    data = append(data, agent.NewMetric("agent.ping", "10", time.Now().Unix()))
+    data = append(data, agent.NewMetric("agent.hostname", agentName))
+
+    var res *zbxagent.Response
+    res, err = agent.Send(data)
+    if err != nil {
+        log.Print(err.Error())
+    } else {
+        log.Print("Received response: ", res.Json)
     }
 }
 ```

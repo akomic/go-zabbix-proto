@@ -4,7 +4,7 @@ import (
 	"encoding/binary"
 )
 
-// Packet class.
+// Packet.
 type Packet struct {
 	Request string
 	Data    []byte
