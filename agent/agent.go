@@ -7,13 +7,13 @@ import (
 	"time"
 )
 
-// Agent.
+// Agent stucture
 type Agent struct {
 	Name   string
 	Client *client.Client
 }
 
-// Agent constructor
+// NewAgent constructor
 func NewAgent(name string, host string, port int) (agent *Agent) {
 	agent = &Agent{
 		Name:   name,
@@ -22,7 +22,7 @@ func NewAgent(name string, host string, port int) (agent *Agent) {
 	return
 }
 
-// Metric Packet constructor.
+// NewMetricPacket constructor.
 func (agent *Agent) NewMetricPacket(data []*Metric, clock ...int64) *client.Packet {
 	mp := &MetricPacket{Request: `sender data`, Data: data}
 	// use current time, if `clock` is not specified
@@ -34,7 +34,7 @@ func (agent *Agent) NewMetricPacket(data []*Metric, clock ...int64) *client.Pack
 	return packet
 }
 
-// Agent method. Sends metrics to Zabbix.
+// Send method. Sends metrics to Zabbix.
 func (agent *Agent) Send(data []*Metric, clock ...int64) (response *Response, err error) {
 	packet := agent.NewMetricPacket(data)
 

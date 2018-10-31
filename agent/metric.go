@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-// Metric.
+// Metric structure
 type Metric struct {
 	Host  string `json:"host"`
 	Key   string `json:"key"`
@@ -12,7 +12,7 @@ type Metric struct {
 	Clock int64  `json:"clock"`
 }
 
-// Metric constructor.
+// NewMetric constructor.
 func (agent *Agent) NewMetric(key, value string, clock ...int64) *Metric {
 	m := &Metric{Host: agent.Name, Key: key, Value: value}
 	// use current time, if `clock` is not specified
@@ -22,7 +22,7 @@ func (agent *Agent) NewMetric(key, value string, clock ...int64) *Metric {
 	return m
 }
 
-// Metric Packet.
+// MetricPacket stucture
 type MetricPacket struct {
 	Request string    `json:"request"`
 	Data    []*Metric `json:"data,omitempty"`
