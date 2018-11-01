@@ -61,11 +61,11 @@ func (proxy *Proxy) NewAvailabilityPacket(data []*AvailabilityData, clock ...int
 
 // History Data.
 type HistoryData struct {
-	Host  string `json:"host,omitempty"`
-	Key   string `json:"key,omitempty"`
-	Clock int64  `json:"clock,omitempty"`
-	Ns    int64  `json:"ns,omitempty"`
-	Value string `json:"value,omitempty"`
+	Host  string      `json:"host,omitempty"`
+	Key   string      `json:"key,omitempty"`
+	Clock int64       `json:"clock,omitempty"`
+	Ns    int64       `json:"ns,omitempty"`
+	Value interface{} `json:"value,omitempty"`
 }
 
 // Host History Packet.
