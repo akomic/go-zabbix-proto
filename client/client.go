@@ -3,7 +3,6 @@ package client
 import (
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net"
 	"time"
 )
@@ -91,7 +90,6 @@ func (c *Client) read(conn *net.TCPConn) (res []byte, err error) {
 
 // Client method, sends packet to Zabbix.
 func (c *Client) Send(packet *Packet) (res []byte, err error) {
-	log.Println("Sending packet with request:", packet.Request)
 	conn, err := c.connect()
 	if err != nil {
 		return

@@ -2,7 +2,7 @@ package proxy
 
 import (
 	"encoding/json"
-	"log"
+	"fmt"
 )
 
 // ProxyResponse class.
@@ -20,9 +20,9 @@ func NewProxyResponse(data []uint8) (r *ProxyResponse, err error) {
 	r = &ProxyResponse{Data: data, JSON: string(jsonData)}
 	err = json.Unmarshal(jsonData, r)
 	if err != nil {
-		log.Printf("Error decoding response: %v", err)
+		err = fmt.Errorf("Error decoding response: %v", err)
 		if e, ok := err.(*json.SyntaxError); ok {
-			log.Printf("Syntax error at byte offset %d", e.Offset)
+			err = fmt.Errorf("%s ; Syntax error at byte offset %d", err, e.Offset)
 		}
 		return
 	}
@@ -107,9 +107,9 @@ func NewProxyConfigResponse(data []uint8) (r *ProxyConfigResponse, err error) {
 	r = &ProxyConfigResponse{Data: data}
 	err = json.Unmarshal(jsonData, r)
 	if err != nil {
-		log.Printf("Error decoding response: %v", err)
+		err = fmt.Errorf("Error decoding response: %v", err)
 		if e, ok := err.(*json.SyntaxError); ok {
-			log.Printf("Syntax error at byte offset %d", e.Offset)
+			err = fmt.Errorf("%s ; Syntax error at byte offset %d", err, e.Offset)
 		}
 		return
 	}
