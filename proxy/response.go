@@ -10,14 +10,14 @@ type ProxyResponse struct {
 	Data     []uint8 `json:"data"`
 	Response string  `json:"response"`
 	Info     string  `json:"info"`
-	Json     string  `json:"json"`
+	JSON     string  `json:"json"`
 }
 
 // ProxyResponse class constructor.
 func NewProxyResponse(data []uint8) (r *ProxyResponse, err error) {
 	jsonData := data[13:]
 
-	r = &ProxyResponse{Data: data, Json: string(jsonData)}
+	r = &ProxyResponse{Data: data, JSON: string(jsonData)}
 	err = json.Unmarshal(jsonData, r)
 	if err != nil {
 		log.Printf("Error decoding response: %v", err)

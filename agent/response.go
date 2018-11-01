@@ -5,19 +5,19 @@ import (
 	"log"
 )
 
-// Response
+// Response structure
 type Response struct {
 	Data     []uint8 `json:"data"`
 	Response string  `json:"response"`
 	Info     string  `json:"info"`
-	Json     string  `json:"json"`
+	JSON     string  `json:"json"`
 }
 
-// Response class constructor.
+// NewResponse is Response class constructor.
 func NewResponse(data []uint8) (r *Response, err error) {
 	jsonData := data[13:]
 
-	r = &Response{Data: data, Json: string(jsonData)}
+	r = &Response{Data: data, JSON: string(jsonData)}
 	err = json.Unmarshal(jsonData, r)
 	if err != nil {
 		log.Printf("Error decoding response: %v", err)

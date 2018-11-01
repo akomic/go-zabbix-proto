@@ -45,7 +45,7 @@ func main() {
     if err != nil {
         log.Print(err.Error())
     } else {
-        log.Print("Received response: ", res.Json)
+        log.Print("Received response: ", res.JSON)
     }
 }
 ```
@@ -79,7 +79,7 @@ func main() {
     if err != nil {
         log.Print(err.Error())
     } else {
-        log.Print("Received response: ", heartbeatRes.Json)
+        log.Print("Received response: ", heartbeatRes.JSON)
     }
 
     // Getting Proxy Config from Zabbix
@@ -104,7 +104,7 @@ func main() {
     if err != nil {
         log.Print(err.Error())
     } else {
-        log.Print("Received response: ", availabilityRes.Json)
+        log.Print("Received response: ", availabilityRes.JSON)
     }
 
     // Sending history data
@@ -122,7 +122,7 @@ func main() {
     if err != nil {
         log.Print(err.Error())
     } else {
-        log.Print("Received response: ", historyRes.Json)
+        log.Print("Received response: ", historyRes.JSON)
     }
 }
 ```
