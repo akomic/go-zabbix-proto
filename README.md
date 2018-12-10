@@ -2,7 +2,9 @@ go-zabbix-proto
 ==================
 
 Go lang package implementing Zabbix Protocols in active mode.
-
+Supported protocols:
+- Agent sender
+- Zabbix Proxy
 
 # Tests
 
