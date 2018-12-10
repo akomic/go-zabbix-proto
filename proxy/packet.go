@@ -65,6 +65,7 @@ type HistoryData struct {
 	Key   string      `json:"key,omitempty"`
 	Clock int64       `json:"clock,omitempty"`
 	Ns    int64       `json:"ns,omitempty"`
+	State string      `json:"state,omitempty"`
 	Value interface{} `json:"value,omitempty"`
 }
 
