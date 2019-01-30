@@ -3,7 +3,7 @@ package proxy
 
 import (
 	"encoding/json"
-	"go-zabbix-proto/client"
+	"github.com/akomic/go-zabbix-proto/client"
 	"time"
 )
 
