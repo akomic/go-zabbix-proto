@@ -15,6 +15,10 @@ type ProxyResponse struct {
 
 // ProxyResponse class constructor.
 func NewProxyResponse(data []uint8) (r *ProxyResponse, err error) {
+	if len(data) < 13 {
+		err = fmt.Errorf("NewProxyResponse Input data to short")
+		return
+	}
 	jsonData := data[13:]
 
 	r = &ProxyResponse{Data: data, JSON: string(jsonData)}
