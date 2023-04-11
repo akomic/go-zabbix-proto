@@ -3,6 +3,7 @@ package proxy
 import (
 	// "encoding/json"
 	"fmt"
+
 	"github.com/akomic/go-zabbix-proto/client"
 )
 
@@ -37,7 +38,7 @@ func (proxy *Proxy) SendHeartbeat() (response *ProxyResponse, err error) {
 	}
 
 	if response.Response != `success` {
-		err = fmt.Errorf("Error sending heartbeat: %s", response.Info)
+		err = fmt.Errorf("error sending heartbeat: %s", response.Info)
 	}
 	return
 }
@@ -59,7 +60,7 @@ func (proxy *Proxy) SendHostAvailability(data []*AvailabilityData) (response *Pr
 	}
 
 	if response.Response != `success` {
-		err = fmt.Errorf("Error sending host availability: %s", response.Info)
+		err = fmt.Errorf("error sending host availability: %s", response.Info)
 	}
 	return
 }
@@ -81,7 +82,7 @@ func (proxy *Proxy) SendHistory(data []*HistoryData) (response *ProxyResponse, e
 	}
 
 	if response.Response != `success` {
-		err = fmt.Errorf("Error sending host availability: %s", response.Info)
+		err = fmt.Errorf("error sending host availability: %s", response.Info)
 	}
 	return
 }
@@ -98,6 +99,7 @@ func (proxy *Proxy) GetConfig() (config *ProxyConfig, err error) {
 	}
 
 	config, err = NewProxyConfig(res)
+
 	return
 }
 

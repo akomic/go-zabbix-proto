@@ -24,7 +24,7 @@ func NewProxyResponse(data []uint8) (r *ProxyResponse, err error) {
 	r = &ProxyResponse{Data: data, JSON: string(jsonData)}
 	err = json.Unmarshal(jsonData, r)
 	if err != nil {
-		err = fmt.Errorf("Error decoding response: %v", err)
+		err = fmt.Errorf("error decoding response: %v", err)
 		if e, ok := err.(*json.SyntaxError); ok {
 			err = fmt.Errorf("%s ; Syntax error at byte offset %d", err, e.Offset)
 		}
@@ -80,8 +80,8 @@ type ProxyConfigResponse struct {
 		Data   [][]int  `json:"data"`
 	} `json:"groups"`
 	Config struct {
-		Fields []string `json:"fields"`
-		Data   [][]int  `json:"data"`
+		Fields []string        `json:"fields"`
+		Data   [][]interface{} `json:"data"`
 	} `json:"config"`
 	Httptest struct {
 		Fields []string      `json:"fields"`
@@ -111,7 +111,7 @@ func NewProxyConfigResponse(data []uint8) (r *ProxyConfigResponse, err error) {
 	r = &ProxyConfigResponse{Data: data}
 	err = json.Unmarshal(jsonData, r)
 	if err != nil {
-		err = fmt.Errorf("Error decoding response: %v", err)
+		err = fmt.Errorf("error decoding response: %v", err)
 		if e, ok := err.(*json.SyntaxError); ok {
 			err = fmt.Errorf("%s ; Syntax error at byte offset %d", err, e.Offset)
 		}
